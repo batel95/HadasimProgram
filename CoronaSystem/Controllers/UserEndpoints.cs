@@ -39,7 +39,7 @@ public static class UserEndpoints
 			.WithName ("GetUsersByCity")
 			.WithOpenApi ();
 
-		group.MapPost ("/", (RequestUser model) =>
+		group.MapPost ("/", async (RequestUser model) =>
 		{
 			await CheckUser.InsertUser (model);
 		})

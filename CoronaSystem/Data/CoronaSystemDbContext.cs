@@ -6,6 +6,9 @@ namespace CoronaSystem.Data
 {
 	public class CoronaSystemDbContext : DbContext
 	{
+		public CoronaSystemDbContext (DbContextOptions options) : base (options)
+		{
+		}
 
 		public virtual DbSet<User> Users { get; set; }
 		public virtual DbSet<Covid> Covids { get; set; }
