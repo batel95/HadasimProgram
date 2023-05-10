@@ -15,7 +15,7 @@
 		private void Choose ()
 		{
 			string ans;
-			Console.WriteLine ("Enter perimeter to calculate the triangular perimeter, Enter print to print the triangular.");
+			Console.WriteLine ("Enter perimeter to calculate the triangle perimeter, Enter print to print the triangle.");
 			do
 			{
 				ans = Console.ReadLine ();
@@ -31,7 +31,7 @@
 						if (!Printable ())
 							Console.WriteLine ("Cannot print the triangle");
 						else
-							TriangularStr ();
+							triangleStr ();
 						break;
 
 					default:
@@ -42,7 +42,7 @@
 			} while (ans == "");
 		}
 
-		private void TriangularStr ()
+		private void triangleStr ()
 		{
 			var starArr = new int[iHeight];
 			var stars = iWidth;

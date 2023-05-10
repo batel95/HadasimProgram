@@ -1,11 +1,11 @@
 ﻿using TwitterTowers;
 
 String ans;
-BaseTowers tower;
+BaseTower tower;
 bool exit = false;
 do
 {
-	Console.WriteLine ("Enter rectangle, triangular or exit");
+	Console.WriteLine ("Enter rectangle, triangle or exit");
 	ans = Console.ReadLine ();
 	ans = ans.ToLower ();
 
@@ -14,8 +14,8 @@ do
 		case "rectangle":
 			tower = new Rectangle ();
 			break;
-		case "triangular":
-			tower = new Triangular ();
+		case "triangle":
+			tower = new Triangle ();
 			break;
 		case "exit":
 			exit = true;

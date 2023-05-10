@@ -1,6 +1,6 @@
 ﻿namespace TwitterTowers
 {
-	internal class BaseTowers
+	internal class BaseTower
 	{
 		protected double Height { get; set; }
 		protected double Width { get; private set; }
@@ -9,11 +9,6 @@
 		private const int MIN_WIDTH = 0;
 
 		protected BaseTower ()
-		{
-			Initialize ();
-		}
-
-		private void Initialize ()
 		{
 			double input;
 			Console.Write ("Enter tower height: ");
@@ -33,6 +28,5 @@
 			else
 				Console.WriteLine ("Invalid value. Tower width must be greater than or equal to {0}", MIN_HEIGHT);
 		}
-
 	}
 }
