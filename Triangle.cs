@@ -47,7 +47,6 @@
 			var starArr = new int[iHeight];
 			var stars = iWidth;
 			var s = (iHeight - 2)/(((iWidth - 1) / 2) - 1);
-			string tempStr = "";
 			int j = 0;
 			starArr [0] = 1;
 			starArr [starArr.Length - 1] = stars;
@@ -69,12 +68,7 @@
 
 			for (int i = 0; i < starArr.Length; i++)
 			{
-				tempStr = "";
-				for (int k = 0; k < starArr [i]; k++)
-				{
-					tempStr += "*";
-				}
-				Console.WriteLine (tempStr.PadLeft (((iWidth - starArr [i]) / 2) + starArr [i]));
+				Console.WriteLine (new String('*', starArr [i]).PadLeft (((iWidth - starArr [i]) / 2) + starArr [i]));
 			}
 
 		}
