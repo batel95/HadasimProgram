@@ -1,4 +1,6 @@
-﻿namespace CoronaSystem.Services {
-	public class NonQueryDataService {
+﻿namespace CoronaSystem.Services
+{
+	public class NonQueryDataService
+	{
 	}
 }

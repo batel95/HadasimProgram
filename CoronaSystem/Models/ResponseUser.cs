@@ -1,9 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace CoronaSystem.Models {
-	public class ResponseUser 
+﻿namespace CoronaSystem.Models
+{
+	public class ResponseUser
 	{
 		public String Name { get; set; }
 		public String UserId { get; set; }
@@ -15,7 +12,7 @@ namespace CoronaSystem.Models {
 
 	}
 
-	public record ResponseCovid(VaccinationResponse?[] Vaccinations, DateTime? Illness, DateTime? Recovery);
+	public record ResponseCovid (VaccinationResponse? [] Vaccinations, DateTime? Illness, DateTime? Recovery);
 
-	public record VaccinationResponse(DateTime VaccinationDate, String VaccinationManufacturer);
+	public record VaccinationResponse (DateTime VaccinationDate, String VaccinationManufacturer);
 }

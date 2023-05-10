@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace CoronaSystem.Models {
-	public class RequestUser {
+namespace CoronaSystem.Models
+{
+	public class RequestUser
+	{
 		[Required]
 		public String FirstName { get; set; }
 		[Required]
@@ -22,7 +22,7 @@ namespace CoronaSystem.Models {
 		public String PhoneNumber { get; set; }
 		[Required]
 		public String CellNumber { get; set; }
-		public String? UserImage { get; set; }
+		public IFormFile? UserImage { get; set; }
 		public DateTime? VaccinationDate1 { get; set; }
 		public String? VaccinationManufacturer1 { get; set; }
 		public DateTime? VaccinationDate2 { get; set; }

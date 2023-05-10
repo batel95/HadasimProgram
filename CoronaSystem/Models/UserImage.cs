@@ -1,11 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CoronaSystem.Models {
-	[Table("Image")]
-	public class UserImage {
+namespace CoronaSystem.Models
+{
+	[Table ("Image")]
+	public class UserImage
+	{
 
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		[DatabaseGenerated (DatabaseGeneratedOption.Identity)]
 		[Key]
 		public Guid Guid { get; set; }
 
