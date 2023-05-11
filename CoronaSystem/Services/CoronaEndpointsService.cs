@@ -1,28 +1,19 @@
 ﻿using CoronaSystem.Data;
 using CoronaSystem.Models;
 
-using Microsoft.EntityFrameworkCore;
-
 namespace CoronaSystem.Services
 {
-	public static class UserEndpointsService
+	public static class CoronaEndpointsService
 	{
 		private static readonly UserDataService _userDataService = new UserDataService();
 
-		public static IResult GetAll ()
+		public static IResult GetAllIlls ()
 		{
-			IEnumerable<User>? users = GetByFilter ();
-			ResponseUser[] toReturn = new [] { new ResponseUser () };
-			if (users != null)
+			Func<User, bool> filter = u =>
 			{
-				toReturn = ResponseUserService.ConvertUserListToResponseUserList (users.ToList ()).ToArray ();
-			}
-			return TypedResults.Ok (toReturn);
-		}
-
-		public static IResult GetByCity (string city)
-		{
-			Func<User, bool> filter = u => u.City == city;
+				if (u.Covid.Illness == null) return false;
+				return u.Covid.Illness >= DateTime.Today;
+			};
 			IEnumerable<User>? users = GetByFilter (filter);
 			ResponseUser[] toReturn = new [] { new ResponseUser () };
 			if (users != null)
@@ -32,15 +23,14 @@ namespace CoronaSystem.Services
 			return TypedResults.Ok (toReturn);
 		}
 
-		public static async Task<IResult> GetById (int id)
+		public static object GetAllVaccinated ()
 		{
-			String idStr = id.ToString ();
-			idStr = new String ('0', 9 - idStr.Length) + idStr;
-			User? user = await _userDataService.Get (idStr);
-			ResponseUser toReturn = new();
-			if (user != null)
+			Func<User, bool> filter = u => u.Covid.VaccinationDate1 != null;
+			IEnumerable<User>? users = GetByFilter (filter);
+			ResponseUser[] toReturn = new [] { new ResponseUser () };
+			if (users != null)
 			{
-				ResponseUserService.ConvertUserToResponseUser (user, toReturn);
+				toReturn = ResponseUserService.ConvertUserListToResponseUserList (users.ToList ()).ToArray ();
 			}
 			return TypedResults.Ok (toReturn);
 		}

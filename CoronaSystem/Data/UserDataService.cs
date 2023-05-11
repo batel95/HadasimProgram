@@ -8,6 +8,8 @@ namespace CoronaSystem.Data
 	public class UserDataService
 	{
 		private readonly DbContextOptions<CoronaSystemDbContext> _contextOptions;
+		private Predicate<User> NoFilter = x => true;
+
 		public UserDataService()
         {
 			_contextOptions = new DbContextOptionsBuilder<CoronaSystemDbContext> ()
@@ -37,14 +39,20 @@ namespace CoronaSystem.Data
 			}
 		}
 
-		public async Task<IEnumerable<User>> GetAll ()
-		{ //TODO: Fix options
+		public IEnumerable<User> GetByFilter (Func<User, bool> filter = null)
+		{
+			if (filter == null)
+			{
+				filter = u => true;
+			}
 			using (var context = new CoronaSystemDbContext (_contextOptions))
 			{
-				IEnumerable<User> entities = await context.Users
+				IEnumerable<User> entities = context.Users
 					.Include(u => u.UserImage)
 					.Include(u => u.Covid)
-					.ToListAsync();
+					.Where(filter)
+					.ToList();
+
 				return entities;
 			}
 		}

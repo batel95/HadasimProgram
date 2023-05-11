@@ -1,4 +1,6 @@
 ﻿using CoronaSystem.Models;
+using CoronaSystem.Services;
+
 namespace CoronaSystem.Controllers;
 
 public static class CoronaVirusEndpoints
@@ -10,12 +12,19 @@ public static class CoronaVirusEndpoints
 
 		group.MapGet ("/ills", () =>
 		{
-			return new [] { new ResponseUser () };
+			return CoronaEndpointsService.GetAllIlls ();
 		})
-		.WithName ("GetAllIllUsers")
+		.WithName ("GetAllTodayIlleUsers")
 		.WithOpenApi ();
 
-		group.MapGet ("/", () =>
+		group.MapGet ("/vaccinated", () =>
+		{
+			return CoronaEndpointsService.GetAllVaccinated ();
+		})
+			.WithName ("GetAllVaccinatedUsers")
+			.WithOpenApi ();
+
+		group.MapGet ("/view", () =>
 		{
 			return new [] { new ResponseUser () };
 		})

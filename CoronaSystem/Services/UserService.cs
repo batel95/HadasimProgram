@@ -166,7 +166,7 @@ namespace CoronaSystem.Services
 				return false;
 			if (!userId.All (c => (c >= '0' && c <= '9')))
 				return false;
-			userId = "000000000" + userId;
+			userId = new String('0', 9 - userId.Length) + userId;
 			userId = userId.Substring (userId.Length - 9);
 			for (int i = 0; i < userId.Length; i++)
 			{

@@ -10,9 +10,9 @@ public static class UserEndpoints
 	{
 		var group = routes.MapGroup("/api/Users").WithTags("Users");
 
-		group.MapGet ("/", async () =>
+		group.MapGet ("/",  () =>
 		{
-			return await UserEndpointsService.GetAll ();
+			return UserEndpointsService.GetAll ();
 		})
 			.WithName ("GetAllUsers")
 			.WithOpenApi ();
@@ -20,14 +20,14 @@ public static class UserEndpoints
 
 		group.MapGet ("/{id:int}", (int id) =>
 		{
-			//return new ResponseUser { ID = id };
+			return UserEndpointsService.GetById (id);
 		})
 			.WithName ("GetUserById")
 			.WithOpenApi ();
 
 		group.MapGet ("/view={id:int}", (int id) =>
 		{
-			//return new ResponseUser { ID = id };
+			//view image
 		})
 			.WithName ("ViewUserImage")
 			.WithOpenApi ();
