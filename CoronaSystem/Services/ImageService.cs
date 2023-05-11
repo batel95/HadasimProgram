@@ -2,7 +2,7 @@
 
 namespace CoronaSystem.Services
 {
-	public static class CheckImage
+	public static class ImageService
 	{
 		// images magic bytes
 		private static readonly Dictionary<string, List<byte[]>> _fileSignature =

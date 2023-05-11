@@ -41,7 +41,7 @@ public static class UserEndpoints
 
 		group.MapPost ("/", async (RequestUser model) =>
 		{
-			await CheckUser.InsertUser (model);
+			await UserService.InsertUser (model);
 		})
 			.WithName ("CreateUser")
 			.WithOpenApi ();

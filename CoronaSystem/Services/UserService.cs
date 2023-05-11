@@ -3,7 +3,7 @@ using CoronaSystem.Models;
 
 namespace CoronaSystem.Services
 {
-	public static class CheckUser
+	public static class UserService
 	{
 		public static async Task<IResult> InsertUser (RequestUser rUser)
 		{
@@ -71,7 +71,7 @@ namespace CoronaSystem.Services
 			}
 			else
 			{
-				user.UserImage = CheckImage.CreateUserImage (rUser.UserImage, user).Result;
+				user.UserImage = ImageService.CreateUserImage (rUser.UserImage, user).Result;
 			}
 			user.Covid = new Covid ();
 			if (rUser.VaccinationDate1 != null && rUser.VaccinationManufacturer1 != null && rUser.VaccinationDate1 > user.BirthDate && rUser.VaccinationDate1 <= DateTime.Today)
@@ -311,7 +311,7 @@ namespace CoronaSystem.Services
 			using (var stream = System.IO.File.Create (Path.Combine (path, image.FileName)))
 			{
 				await image.CopyToAsync (stream);
-				toReturn = CheckImage.IsLegalImage (stream, ext);
+				toReturn = ImageService.IsLegalImage (stream, ext);
 			}
 			if (File.Exists (Path.Combine (path, image.FileName)))
 				File.Delete (Path.Combine (path, image.FileName));

@@ -8,6 +8,7 @@
 		public DateTime BirthDate { get; set; }
 		public String PhoneNumber { get; set; }
 		public String CellNumber { get; set; }
+		public bool HesImage { get; set; }
 		public ResponseCovid CovidInfo { get; set; }
 
 	}
