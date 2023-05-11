@@ -32,6 +32,6 @@ app.MapUsersEndpoints ();
 
 app.MapCoronaVirusEndpoints ();
 
-app.Run ();
+app.EnsureDatabaseCreated ();
 
-Console.WriteLine ("h");
+app.Run ();

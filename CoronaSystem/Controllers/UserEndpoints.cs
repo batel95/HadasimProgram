@@ -1,4 +1,5 @@
-﻿using CoronaSystem.Models;
+﻿using CoronaSystem.Data;
+using CoronaSystem.Models;
 using CoronaSystem.Services;
 
 namespace CoronaSystem.Controllers;
@@ -9,9 +10,9 @@ public static class UserEndpoints
 	{
 		var group = routes.MapGroup("/api/Users").WithTags("Users");
 
-		group.MapGet ("/", () =>
+		group.MapGet ("/", async () =>
 		{
-			return new [] { new ResponseUser () };
+			return await UserEndpointsService.GetAll ();
 		})
 			.WithName ("GetAllUsers")
 			.WithOpenApi ();

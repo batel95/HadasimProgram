@@ -10,7 +10,7 @@ namespace CoronaSystem.Data
 		{
 		}
 
-		public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 		public virtual DbSet<Covid> Covids { get; set; }
 		public virtual DbSet<UserImage> Images { get; set; }
 

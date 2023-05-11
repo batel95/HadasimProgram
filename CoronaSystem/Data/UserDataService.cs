@@ -7,10 +7,16 @@ namespace CoronaSystem.Data
 {
 	public class UserDataService
 	{
-		private static readonly DbContextOptions _options;
-		public static async Task<User> Create (User entity)
+		private readonly DbContextOptions<CoronaSystemDbContext> _contextOptions;
+		public UserDataService()
+        {
+			_contextOptions = new DbContextOptionsBuilder<CoronaSystemDbContext> ()
+			.UseSqlServer (System.Configuration.ConfigurationManager.ConnectionStrings["CoronaSystemContext"].ConnectionString)
+			.Options;
+		}
+        public async Task<User> Create (User entity)
 		{
-			using (var context = new CoronaSystemDbContext (_options))
+			using (var context = new CoronaSystemDbContext(_contextOptions))
 			{
 				EntityEntry<User> createdResult = await context.Set<User>().AddAsync(entity);
 				await context.SaveChangesAsync ();
@@ -19,11 +25,27 @@ namespace CoronaSystem.Data
 			}
 		}
 
-		public static async Task<User?> Get (string id)
+		public async Task<User?> Get (string id)
 		{
-			using (var context = new CoronaSystemDbContext (_options))
+			using (var context = new CoronaSystemDbContext (_contextOptions))
 			{
-				return await context.Set<User> ().FirstOrDefaultAsync ((e) => e.IdNumber == id);
+				User? entity = await context.Users
+					.Include(u => u.UserImage)
+					.Include(u => u.Covid)
+					.FirstOrDefaultAsync((u) => u.IdNumber == id);
+				return entity;
+			}
+		}
+
+		public async Task<IEnumerable<User>> GetAll ()
+		{ //TODO: Fix options
+			using (var context = new CoronaSystemDbContext (_contextOptions))
+			{
+				IEnumerable<User> entities = await context.Users
+					.Include(u => u.UserImage)
+					.Include(u => u.Covid)
+					.ToListAsync();
+				return entities;
 			}
 		}
 

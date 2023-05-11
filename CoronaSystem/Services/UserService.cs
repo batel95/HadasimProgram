@@ -5,6 +5,8 @@ namespace CoronaSystem.Services
 {
 	public static class UserService
 	{
+		private static readonly UserDataService _userDataService = new UserDataService();
+
 		public static async Task<IResult> InsertUser (RequestUser rUser)
 		{
 			User user = new();
@@ -140,13 +142,13 @@ namespace CoronaSystem.Services
 				}
 			}
 
-			tempUser = await UserDataService.Get (user.IdNumber);
+			tempUser = await _userDataService.Get (user.IdNumber);
 			if (tempUser != null)
 			{
 				return TypedResults.BadRequest ("This person is in the system");
 			}
 
-			tempUser = await UserDataService.Create (user);
+			tempUser = await _userDataService.Create (user);
 
 			if (tempUser == null)
 			{
