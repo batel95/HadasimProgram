@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33417.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoronaSystem", "CoronaSystem\CoronaSystem.csproj", "{5EC2A9DF-1467-4E41-AA4E-B7EFE096B8EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoronaSystem.Show", "CoronaSystem.Show\CoronaSystem.Show.csproj", "{D50A6D15-0ABC-45E3-B8CC-5516CCE2ED05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5EC2A9DF-1467-4E41-AA4E-B7EFE096B8EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EC2A9DF-1467-4E41-AA4E-B7EFE096B8EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EC2A9DF-1467-4E41-AA4E-B7EFE096B8EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D50A6D15-0ABC-45E3-B8CC-5516CCE2ED05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D50A6D15-0ABC-45E3-B8CC-5516CCE2ED05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D50A6D15-0ABC-45E3-B8CC-5516CCE2ED05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D50A6D15-0ABC-45E3-B8CC-5516CCE2ED05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

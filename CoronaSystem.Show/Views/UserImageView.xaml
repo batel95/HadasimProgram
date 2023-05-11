@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="CoronaSystem.Show.Views.UserImageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoronaSystem.Show.Views"
+			 xmlns:viewmodels="clr-namespace:CoronaSystem.Show.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.DataContext>
+		<viewmodels:UserImageViewModel/>
+	</UserControl.DataContext>
+
+	<Image Source="{Binding ImageUri}" HorizontalAlignment="Center" 
+    Margin="0,0,0,0" Name="userImage" Stretch="Uniform" VerticalAlignment="Center" />
+</UserControl>
